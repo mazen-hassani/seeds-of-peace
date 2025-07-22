@@ -1,21 +1,22 @@
-# Web Clicker
-Here is a simple clicker made in html, css &amp; javascript
+# 🌱 Seeds of Peace (بذور السلام)
 
-## Table of contents
-* [General info](#general-info)
-* [Requirements](#requirements)
-* [Setup](#setup)
+Seeds of Peace is an interactive idle/clicker web game aiming to combat violence, hatred, and extremism by symbolically planting "seeds" of peace, empathy, education, and dialogue.
 
-## General Info
-* This is only the game's code, there is no support for data saving implemented
-* This is open source, feel free to use it as you like.
+### Vision 🌍
 
-## Requirements
-* Any web browser supporting HTML5,js,css
+Each click symbolizes an act of peace, kindness, or positive dialogue, gradually transforming a barren landscape of conflict into a thriving garden of coexistence.
 
-## Setup
-* Download zip, fork or clone.
-* run index.html
+### Gameplay Mechanics 🎮
 
-## Screenshot Example
-![Screenshot Image](https://github.com/MykleCode/web-clicker/blob/master/img/screenshot.png)
+- **Click:** Plant a "Seed of Peace" that visually transforms the landscape.
+- **Idle Actions:** Automate peace-building through symbolic characters (Teachers, Advocates, Artists).
+- **Milestones:** Unlock educational content, real-world stories of peace, and conflict resolution inspiration.
+
+### Monetization Model 💰
+
+- Ethical ads or sponsorships.
+- Donations supporting NGOs fighting violence and promoting peace.
+
+### Credits & License 📝
+
+Forked from [MykleR/web-clicker](https://github.com/MykleR/web-clicker), licensed under AGPL-3.0.
