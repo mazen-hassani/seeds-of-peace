@@ -20,14 +20,16 @@
 //       									 ============= GLOBAL VARIABLES =============
 
 var money = 0,//global player's money
-	clickGain = 1,//money gain on clicker clicked =
-	autoGain = 1,//auto money gain
-	interval;//auto money interval
+        clickGain = 1,//money gain on clicker clicked =
+        autoGain = 1,//auto money gain
+        interval,//auto money interval
+        peaceSeeds = 0;//counts planted seeds
 
 // HTML MAIN ELEMENTS (except  shop buttons)
 var element = {
-	clicker   : document.getElementById("main-clicker"),//button
-	money     : document.getElementById("money"),//txt
+        clicker   : document.getElementById("main-clicker"),//button
+        money     : document.getElementById("money"),//txt
+        seeds     : document.getElementById("seeds"),//peace seeds counter
 }
 
 //       									============= GLOBAL FUNCTIONS =============
@@ -39,6 +41,9 @@ function updateMoney(check=true) {//update html money txt
   text = "$" + money;
   element.money.innerHTML = text;
   if(check){checkPrices();}
+}
+function updateSeeds(){
+  element.seeds.innerHTML = "Peace Seeds planted: " + peaceSeeds;
 }
 function autoMoney(amount) {//auto add money every interval
   clearInterval(interval);
@@ -137,15 +142,19 @@ shop = [
 
 // FIRST UPDATE (on page loaded)
 updateMoney(); //money txt
+updateSeeds(); //seed counter
 for (let i=0;i<shop.length;i++){
-	shop[i].update() //buttons txt & price
+        shop[i].update() //buttons txt & price
 }
 
 //set main clicker function onClick
-element.clicker.onclick = function() { 
-	element.clicker.disabled = true;
-	addMoney(); updateMoney(); 
-	element.clicker.disabled = false;
+element.clicker.onclick = function() {
+        element.clicker.disabled = true;
+        addMoney();
+        updateMoney();
+        peaceSeeds += 1;
+        updateSeeds();
+        element.clicker.disabled = false;
 };
 
 
