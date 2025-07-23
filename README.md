@@ -11,6 +11,7 @@ Each click symbolizes an act of peace, kindness, or positive dialogue, gradually
 - **Click:** Plant a "Seed of Peace" that visually transforms the landscape.
 - **Idle Actions:** Automate peace-building through symbolic characters (Teachers, Advocates, Artists).
 - **Milestones:** Unlock educational content, real-world stories of peace, and conflict resolution inspiration.
+- **Dynamic Background:** Starts in a blurred grayscale state and becomes clearer with each planted seed, celebrating milestones with a colorful flourish.
 
 ### Monetization Model 💰
 
