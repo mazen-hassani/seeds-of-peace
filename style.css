@@ -137,11 +137,36 @@ body{
 */
 
 .money-text {
-	-webkit-touch-callout: none;
+        -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
   margin-left: 20px;
   color: #FFFFFF;
   font-size: 50;
+}
+
+/* Overlay for milestone messages */
+#milestone-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+  text-align: center;
+  padding-top: 20%;
+  z-index: 5;
+}
+
+#milestone-overlay.show {
+  display: block;
+}
+
+#milestone-close {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
