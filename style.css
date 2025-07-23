@@ -1,152 +1,88 @@
+/* Minimal reset and peaceful styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/*
-CopyLeft 2020 Michael Rouves
+html, body {
+  height: 100%;
+}
 
-	This file is part of Michael's Clicker.
-	Michael's Clicker is free software: you can redistribute it and/or modify
-	it under the terms of the GNU Affero General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	Michael's Clicker is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU Affero General Public License for more details.
-
-	You should have received a copy of the GNU Affero General Public License
-	along with Michael's Clicker. If not, see <https://www.gnu.org/licenses/>.
-*/
-
-
-
-
-
-/* 
-			================= BODY =================
-*/
-body{
-        background: rgb(15,232,146);
-        background: radial-gradient(circle, rgba(15,232,146,1) 0%, rgba(11,186,131,1) 31%, rgba(8,129,153,1) 100%);
-        overflow: hidden;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f7fa;
+  font-family: "Inter", "Arial", "Segoe UI", sans-serif;
+  color: #333;
+  text-align: center;
 }
 
 #background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6');
-        background-size: cover;
-        background-position: center;
-        filter: grayscale(100%) blur(5px);
-        z-index: -1;
-        transition: filter 0.5s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5f7fa;
+  z-index: -1;
+  transition: filter 0.5s;
 }
 
 .flourish {
-        animation: flourish 2s ease;
+  animation: flourish 2s ease;
 }
 
 @keyframes flourish {
-        0% { filter: grayscale(0%) brightness(1); }
-        50% { filter: grayscale(0%) brightness(1.5); }
-        100% { filter: grayscale(0%) brightness(1); }
+  0% { filter: grayscale(0%) brightness(1); }
+  50% { filter: grayscale(0%) brightness(1.5); }
+  100% { filter: grayscale(0%) brightness(1); }
 }
-
-/* 
-      ================= ALL BUTTONS ANIMATIONS =================
-*/
-
-.button, .clicker {
-	/*Disable selection and drag*/
-	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    
-	/*Revome buttons borders and otlines*/
-	outline: none;
-	border: none;
-	background-color:#FFFFFF;/*white*/
-	
-	/*Transition Animation between hover/active...*/
-	transition: box-shadow 0.3s, background-color 0.3s;
-}
-.button:hover, .clicker:hover{
-	box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(15, 15, 15, 0.15);/*shadow*/
-}
-.button:active, .clicker:active{
-	/*Shadow, color transition*/
-	transition: box-shadow 0.15s, background-color 0.1s;
-	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3), 0 20px 20px 0 rgba(0, 0, 0, 0.15);
-	background-color:#F0F0F0;
-}
-
-/*
-			================= SHOP =================
-*/
-.button{
-        width: 200;height: 50;
-        position: absolute;
-        left: 87%;
-        transform: translate(-50%, -50%);
-}
-.button:disabled{
-        background-color: #B3B3B3;
-}
-
-#b1{top:22%}
-#b2{top:32%}
-#b3{top:42%}
-
-/* Peace builder buttons */
-.builder{ left:13%; }
-#teacher{top:60%}
-#advocate{top:70%}
-#artist{top:80%}
-
-
-/* 
-	  ================= Main Clicker Button =================
-*/
-.clicker {
-	/*Size*/
-	border-radius: 50%;
-	width:200px;
-	height:200px;
-	/* Position */
-	position: absolute;/*                postulat de départ */
-	top: 50%; left: 50%;/*               à 50%/50% du parent référent */
-	transform: translate(-50%, -50%);/*  décalage de 50% de sa propre taille */
-	/* Animation */
-	transition: width 0.3s, height 0.3s;
-}
-.clicker:hover {
-	width:225px;
-	height:225px;
-}
-.clicker:active {
-	transition: width 0.05s, height 0.05s;
-	width:200px;
-	height:200px;
-}
-
-/* 
-	    ================= Money text Display =================
-*/
 
 .money-text {
-        -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  margin-left: 20px;
-  color: #FFFFFF;
-  font-size: 50;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Overlay for milestone messages */
+#main-clicker {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a8d5ba;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+#logo-clicker {
+  width: 70%;
+  height: auto;
+  pointer-events: none;
+}
+
+.button,
+#milestone-close {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #a8d5ba;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  margin: 0.5rem;
+  min-width: 200px;
+}
+
+.button:disabled {
+  opacity: 0.6;
+}
+
 #milestone-overlay {
   display: none;
   position: fixed;
@@ -154,33 +90,28 @@ body{
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  color: #FFFFFF;
-  text-align: center;
-  padding-top: 20%;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   z-index: 5;
 }
 
 #milestone-overlay.show {
-  display: block;
+  display: flex;
 }
 
-#milestone-close {
-  margin-top: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-/* Fixed banner for ethical advertising */
 #adBanner {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255,255,255,0.8);
   color: #333;
   text-align: center;
   line-height: 60px;
   z-index: 10;
 }
+
