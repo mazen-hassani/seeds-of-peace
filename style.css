@@ -170,3 +170,17 @@ body{
   padding: 10px 20px;
   cursor: pointer;
 }
+
+/* Fixed banner for ethical advertising */
+#adBanner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+  z-index: 10;
+}
