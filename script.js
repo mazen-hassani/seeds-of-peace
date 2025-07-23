@@ -33,6 +33,19 @@ var builders = {
   artist:    {element: document.getElementById("artist"),    cost: 1000, rate: 12, count: 0, emoji: "🎨",    label: "Artist"},
 };
 
+// milestone messages
+var milestoneData = [
+  { seeds: 100, text: "When the power of love overcomes the love of power the world will know peace. — Jimi Hendrix" },
+  { seeds: 500, text: "In 1998 the Good Friday Agreement brought hope to Northern Ireland, showing dialogue can end decades of conflict." },
+  { seeds: 1000, text: "Malala Yousafzai reminds us that a single voice for education can sow peace around the world." }
+];
+var shownMilestones = new Set();
+
+var overlay = document.getElementById("milestone-overlay"),
+    overlayContent = document.getElementById("milestone-content"),
+    overlayClose = document.getElementById("milestone-close");
+overlayClose.onclick = function(){ overlay.classList.remove('show'); };
+
 //background effect variables
 var background = document.getElementById("background"),
         blurLevel = 5,
@@ -64,11 +77,21 @@ function updateBackground(){
   grayLevel = Math.max(0, grayLevel - 2);
   background.style.filter = "grayscale("+grayLevel+"%) blur("+blurLevel+"px)";
 }
+function showMilestone(text){
+  overlayContent.textContent = text;
+  overlay.classList.add('show');
+}
 function checkMilestones(){
-  if([50,100,500].includes(peaceSeeds)){
+  if([50,100,500,1000].includes(peaceSeeds)){
     background.classList.add('flourish');
     setTimeout(function(){background.classList.remove('flourish');},2000);
   }
+  milestoneData.forEach(function(data){
+    if(peaceSeeds >= data.seeds && !shownMilestones.has(data.seeds)){
+      showMilestone(data.text);
+      shownMilestones.add(data.seeds);
+    }
+  });
 }
 function autoMoney(amount) {//auto add money every interval
   clearInterval(interval);
