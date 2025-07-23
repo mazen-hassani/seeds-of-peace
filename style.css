@@ -87,18 +87,24 @@ body{
 			================= SHOP =================
 */
 .button{
-	width: 200;height: 50;
-	position: absolute;
-	left: 87%;
-	transform: translate(-50%, -50%);
+        width: 200;height: 50;
+        position: absolute;
+        left: 87%;
+        transform: translate(-50%, -50%);
 }
 .button:disabled{
-	background-color: #B3B3B3;
+        background-color: #B3B3B3;
 }
 
 #b1{top:22%}
 #b2{top:32%}
 #b3{top:42%}
+
+/* Peace builder buttons */
+.builder{ left:13%; }
+#teacher{top:60%}
+#advocate{top:70%}
+#artist{top:80%}
 
 
 /* 

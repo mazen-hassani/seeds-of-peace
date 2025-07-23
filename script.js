@@ -25,6 +25,14 @@ var money = 0,//global player's money
         interval,//auto money interval
         peaceSeeds = 0;//counts planted seeds
 
+//peace builder automation
+var seedRate = 0;
+var builders = {
+  teacher:   {element: document.getElementById("teacher"),   cost: 100,  rate: 1,  count: 0, emoji: "📚👩‍🏫", label: "Teacher"},
+  advocate:  {element: document.getElementById("advocate"),  cost: 500, rate: 5,  count: 0, emoji: "🗣️",    label: "Peace Advocate"},
+  artist:    {element: document.getElementById("artist"),    cost: 1000, rate: 12, count: 0, emoji: "🎨",    label: "Artist"},
+};
+
 //background effect variables
 var background = document.getElementById("background"),
         blurLevel = 5,
@@ -47,8 +55,9 @@ function updateMoney(check=true) {//update html money txt
   element.money.innerHTML = text;
   if(check){checkPrices();}
 }
-function updateSeeds(){
+function updateSeeds(check=true){
   element.seeds.innerHTML = "Peace Seeds planted: " + peaceSeeds;
+  if(check){checkBuilderPrices();}
 }
 function updateBackground(){
   blurLevel = Math.max(0, blurLevel - 0.1);
@@ -68,13 +77,41 @@ function autoMoney(amount) {//auto add money every interval
 
 //called when a shop Element was bought
 function checkPrices() {
-	//Check price for each shop element
-	//unlock purchase button if enough money
-	for(let i=0;i<shop.length;i++){
-		if(money >= shop[i].price){
-			shop[i].element.disabled = false;
-		}
-	}
+        //Check price for each shop element
+        //unlock purchase button if enough money
+        for(let i=0;i<shop.length;i++){
+                if(money >= shop[i].price){
+                        shop[i].element.disabled = false;
+                }
+        }
+}
+
+function checkBuilderPrices(){
+  for(const key in builders){
+    const b = builders[key];
+    if(peaceSeeds >= b.cost){
+      b.element.disabled = false;
+    }else{
+      b.element.disabled = true;
+    }
+  }
+}
+
+function updateBuilderText(builder){
+  builder.element.getElementsByTagName("b")[0].innerHTML =
+    '<b>' + builder.cost + ' seeds: </b>' + builder.emoji + ' ' + builder.label +
+    ' (' + builder.count + ')';
+}
+
+function purchaseBuilder(type){
+  const b = builders[type];
+  if(peaceSeeds < b.cost) return;
+  peaceSeeds -= b.cost;
+  b.count += 1;
+  seedRate += b.rate;
+  updateSeeds(false);
+  updateBuilderText(b);
+  checkBuilderPrices();
 }
 //called when a shop Element was bought
 function onBuy(obj) {
@@ -162,6 +199,21 @@ updateSeeds(); //seed counter
 for (let i=0;i<shop.length;i++){
         shop[i].update() //buttons txt & price
 }
+
+for(const key in builders){
+  builders[key].element.onclick = purchaseBuilder.bind(null, key);
+  updateBuilderText(builders[key]);
+}
+checkBuilderPrices();
+
+setInterval(function(){
+  if(seedRate>0){
+    peaceSeeds += seedRate;
+    updateSeeds(false);
+    updateBackground();
+    checkMilestones();
+  }
+},1000);
 
 //set main clicker function onClick
 element.clicker.onclick = function() {
