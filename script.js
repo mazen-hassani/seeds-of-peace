@@ -25,6 +25,11 @@ var money = 0,//global player's money
         interval,//auto money interval
         peaceSeeds = 0;//counts planted seeds
 
+//background effect variables
+var background = document.getElementById("background"),
+        blurLevel = 5,
+        grayLevel = 100;
+
 // HTML MAIN ELEMENTS (except  shop buttons)
 var element = {
         clicker   : document.getElementById("main-clicker"),//button
@@ -44,6 +49,17 @@ function updateMoney(check=true) {//update html money txt
 }
 function updateSeeds(){
   element.seeds.innerHTML = "Peace Seeds planted: " + peaceSeeds;
+}
+function updateBackground(){
+  blurLevel = Math.max(0, blurLevel - 0.1);
+  grayLevel = Math.max(0, grayLevel - 2);
+  background.style.filter = "grayscale("+grayLevel+"%) blur("+blurLevel+"px)";
+}
+function checkMilestones(){
+  if([50,100,500].includes(peaceSeeds)){
+    background.classList.add('flourish');
+    setTimeout(function(){background.classList.remove('flourish');},2000);
+  }
 }
 function autoMoney(amount) {//auto add money every interval
   clearInterval(interval);
@@ -154,6 +170,8 @@ element.clicker.onclick = function() {
         updateMoney();
         peaceSeeds += 1;
         updateSeeds();
+        updateBackground();
+        checkMilestones();
         element.clicker.disabled = false;
 };
 
