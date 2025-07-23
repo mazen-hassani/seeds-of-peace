@@ -10,6 +10,7 @@ Each click symbolizes an act of peace, kindness, or positive dialogue, gradually
 
 - **Click:** Plant a "Seed of Peace" that visually transforms the landscape.
 - **Idle Actions:** Automate peace-building through symbolic characters (Teachers, Advocates, Artists).
+  - Purchase with peace seeds: Teacher (100 seeds, 1 seed/sec), Peace Advocate (500 seeds, 5 seeds/sec), Artist (1000 seeds, 12 seeds/sec).
 - **Milestones:** Unlock educational content, real-world stories of peace, and conflict resolution inspiration.
 - **Dynamic Background:** Starts in a blurred grayscale state and becomes clearer with each planted seed, celebrating milestones with a colorful flourish.
 
